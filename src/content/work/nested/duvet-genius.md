@@ -1,22 +1,162 @@
 ---
-title: Duvet Genius
-publishDate: 2020-03-04 00:00:00
-img: /assets/stock-3.jpg
-img_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
+title: Mobile Tracker
+publishDate: 2024-10-11 00:00:00
+img: /assets/stock-mobile-tracker.jpg
+img_alt: Mobile tracker illustration with IoT devices, chips, and sensors
 description: |
-  We developed a virtual showcase for the softest bedding imaginable.
-tags:
-  - Design
-  - Dev
-  - Branding
+  A comprehensive project on Mobile Tracker using IoT devices, chips, and sensors.
+author: Mr. Muthuraja
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere commodo venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam non ligula vel metus efficitur hendrerit. In hac habitasse platea dictumst. Praesent et mauris ut mi dapibus semper. Curabitur tortor justo, efficitur sit amet pretium cursus, porta eget odio. Cras ac venenatis dolor. Donec laoreet posuere malesuada. Curabitur nec mi tempor, placerat leo sit amet, tincidunt est. Quisque pellentesque venenatis magna, eget tristique nibh pulvinar in. Vestibulum vitae volutpat arcu. Aenean ut malesuada odio, sit amet pellentesque odio. Suspendisse nunc elit, blandit nec hendrerit non, aliquet at magna. Donec id leo ut nulla sagittis sodales.
+<div class="project-container">
+    <header class="project-header">
+        <h1>Mobile Tracker</h1>
+        <p><strong>Author:</strong> Mr. Muthuraja</p>
+        <p><strong>Published Date:</strong> October 11, 2024</p>
+        <img class="project-image" src="/assets/stock-mobile-tracker.jpg" alt="Mobile tracker illustration with IoT devices, chips, and sensors" />
+    </header>
 
-Integer vitae nibh elit. Suspendisse eget urna eu neque bibendum pharetra. Sed interdum lectus sem, in pulvinar magna dignissim vel. Quisque maximus at urna nec laoreet. Suspendisse potenti. Vestibulum rhoncus sem ut mi pellentesque, in vestibulum erat blandit. Aliquam sodales dui ac maximus consectetur. Duis quis est vehicula, imperdiet nisl nec, fermentum erat. Duis tortor diam, pharetra eu euismod in, vehicula non eros. Curabitur facilisis dui at erat ultrices gravida. In at nunc ultricies, pulvinar mi vel, sagittis mauris. Praesent pharetra posuere purus ac imperdiet. Nulla facilisi.
+    <div class="project-content">
+        <section class="project-description">
+            <p>
+                This project focuses on developing a mobile tracker using IoT devices, chips, and sensors. The goal is to create a reliable and efficient system for tracking mobile devices in real-time.
+            </p>
+        </section>
 
-Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
+        <section class="project-details">
+            <h2>Overview</h2>
+            <p>
+                The Mobile Tracker project leverages modern IoT technology to provide accurate location tracking. By integrating various chips and sensors, the system can gather and process data in real-time to deliver precise tracking information.
+            </p>
 
-Mauris sed eros in ex maximus volutpat. Suspendisse potenti. Donec lacinia justo consectetur sagittis tempor. Proin ullamcorper nisi vitae auctor rhoncus. Sed tristique aliquam augue. Pellentesque vitae fringilla ligula. Nulla arcu elit, efficitur eu nunc malesuada, eleifend tincidunt orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer mattis orci in bibendum ultricies. Quisque a dui erat. Phasellus et vulputate ipsum. Proin metus ex, lobortis nec ornare eget, bibendum ut sapien. Aliquam in dolor lobortis, aliquam tellus a, congue augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <h2>Key Components</h2>
+            <ul>
+                <li>GPS Chips: Provides accurate location data.</li>
+                <li>Accelerometer Sensors: Detects movement and orientation.</li>
+                <li>Gyroscope Sensors: Measures the device's rotation and angular velocity.</li>
+                <li>Microcontroller: Manages data processing and communication between sensors and the central server.</li>
+            </ul>
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
+            <h2>How It Works</h2>
+            <p>
+                The mobile tracker uses GPS chips to determine the device's location. Accelerometer and gyroscope sensors help track movement and orientation. The microcontroller processes the sensor data and communicates with the central server to update the location in real-time.
+            </p>
+
+            <h2>Implementation</h2>
+            <pre><code class="language-python">
+# Import necessary libraries
+import time
+import board
+import busio
+import adafruit_gps
+from adafruit_lsm6ds import LSM6DS33
+
+# Setup GPS
+uart = busio.UART(board.TX, board.RX, baudrate=9600, timeout=10)
+gps = adafruit_gps.GPS(uart, debug=False)
+
+# Setup accelerometer and gyroscope
+sensor = LSM6DS33(board.I2C())
+
+def get_gps_data():
+    gps.update()
+    if not gps.has_fix:
+        return None
+    return {
+        'latitude': gps.latitude,
+        'longitude': gps.longitude,
+        'speed': gps.speed_knots
+    }
+
+def get_sensor_data():
+    accel_x, accel_y, accel_z = sensor.acceleration
+    gyro_x, gyro_y, gyro_z = sensor.gyro
+    return {
+        'acceleration': (accel_x, accel_y, accel_z),
+        'gyroscope': (gyro_x, gyro_y, gyro_z)
+    }
+
+def main():
+    while True:
+        gps_data = get_gps_data()
+        if gps_data:
+            print(f"GPS: {gps_data}")
+        
+        sensor_data = get_sensor_data()
+        print(f"Sensor: {sensor_data}")
+        
+        time.sleep(1)
+
+if __name__ == "__main__":
+    main()
+            </code></pre>
+        </section>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #000000, #222222);
+        background-size: 400% 400%;
+        animation: gradientBackground 15s ease infinite;
+        color: #fff;
+        font-family: Arial, sans-serif;
+    }
+
+    @keyframes gradientBackground {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .project-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    .project-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .project-image {
+        width: 100%;
+        border-radius: 1rem;
+        animation: fadeInScale 2s ease-in-out;
+    }
+
+    .project-content {
+        animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInScale {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
