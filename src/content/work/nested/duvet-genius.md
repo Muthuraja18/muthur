@@ -5,7 +5,7 @@ img: /assets/stock-mobile-tracker.jpg
 img_alt: Mobile tracker illustration with IoT devices, chips, and sensors
 description: |
   A comprehensive project on Mobile Tracker using IoT devices, chips, and sensors.
-author: Mr. Muthuraja
+author: Mr.Muthuraja
 
 
 <div class="project-container">
