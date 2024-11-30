@@ -12,7 +12,7 @@ author: Mr.Muthuraja
         <h1>Mobile Tracker</h1>
         <p><strong>Author:</strong> Mr. Muthuraja</p>
         <p><strong>Published Date:</strong> October 11, 2024</p>
-        <img class="project-image" src="/assets/stock-mobile-tracker.jpg" alt="Mobile tracker illustration with IoT devices, chips, and sensors" />
+        <img class="project-image" src="/assets/stock.jpg" alt="Mobile tracker illustration with IoT devices, chips, and sensors" />
     </header>
 
     <div class="project-content">
